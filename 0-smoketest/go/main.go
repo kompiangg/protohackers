@@ -36,7 +36,10 @@ func main() {
 				log.Printf("[Error] error when copy the data: %v", err)
 			}
 
-			c.Close()
+			err = c.Close()
+			if err != nil {
+				log.Printf("[Error] error when closing the tcp connections: %v", err)
+			}
 		}(conn)
 	}
 }
